@@ -1,0 +1,366 @@
+/* ── Reset & Base ────────────────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f5f7f5;
+  color: #333;
+  min-height: 100vh;
+}
+
+/* ── Layout ──────────────────────────────────────────── */
+.app-header {
+  background: #2e7d32;
+  color: white;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.app-header h1 {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.app-header nav {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.app-header nav a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.app-header nav a:hover,
+.app-header nav a.active {
+  background: rgba(255,255,255,0.2);
+}
+
+.btn-logout {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px 16px;
+}
+
+/* ── Auth Pages ──────────────────────────────────────── */
+.auth-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.auth-card {
+  background: white;
+  border-radius: 16px;
+  padding: 40px 32px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-card h2 {
+  color: #2e7d32;
+  margin-bottom: 24px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.auth-card .subtitle {
+  text-align: center;
+  color: #777;
+  margin-top: -16px;
+  margin-bottom: 24px;
+  font-size: 0.9rem;
+}
+
+/* ── Forms ───────────────────────────────────────────── */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #2e7d32;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ── Buttons ─────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: #2e7d32;
+  color: white;
+}
+.btn-primary:hover { background: #1b5e20; }
+
+.btn-danger {
+  background: #c62828;
+  color: white;
+}
+.btn-danger:hover { background: #b71c1c; }
+
+.btn-secondary {
+  background: #e8e8e8;
+  color: #333;
+}
+.btn-secondary:hover { background: #ddd; }
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  width: auto;
+  border-radius: 8px;
+}
+
+.btn-group {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: #2e7d32;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
+
+/* ── Cards ───────────────────────────────────────────── */
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  border-left: 5px solid #ccc;
+}
+
+.card.status-ok { border-left-color: #4caf50; }
+.card.status-atencao { border-left-color: #ff9800; }
+.card.status-proximo { border-left-color: #ffc107; }
+.card.status-baixo { border-left-color: #f44336; }
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.card-header h3 {
+  font-size: 1.1rem;
+}
+
+.badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.badge-ok { background: #e8f5e9; color: #2e7d32; }
+.badge-atencao { background: #fff3e0; color: #e65100; }
+.badge-proximo { background: #fffde7; color: #f57f17; }
+.badge-baixo { background: #ffebee; color: #c62828; }
+
+.card-details {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 4px;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+/* ── Dashboard Alerts ────────────────────────────────── */
+.alert-section {
+  margin-bottom: 24px;
+}
+
+.alert-section h2 {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #999;
+}
+
+.empty-state p {
+  font-size: 1rem;
+  margin-top: 8px;
+}
+
+/* ── Modal ───────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 20px;
+}
+
+.modal {
+  background: white;
+  border-radius: 16px;
+  padding: 28px 24px;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal h2 {
+  margin-bottom: 20px;
+  color: #2e7d32;
+}
+
+/* ── Error message ───────────────────────────────────── */
+.error-msg {
+  background: #ffebee;
+  color: #c62828;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+}
+
+/* ── Page Header ─────────────────────────────────────── */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.page-header h2 {
+  font-size: 1.3rem;
+  color: #2e7d32;
+}
+
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 600px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  .card-details {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .app-header {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+/* ── Maintenance list ────────────────────────────────── */
+.maint-item {
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+.maint-item:last-child {
+  border-bottom: none;
+}
+.maint-item .maint-desc {
+  font-weight: 600;
+}
+.maint-item .maint-meta {
+  font-size: 0.85rem;
+  color: #777;
+  margin-top: 4px;
+}
+
+/* ── Loading ─────────────────────────────────────────── */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  color: #999;
+  font-size: 1rem;
+}
