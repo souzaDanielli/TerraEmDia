@@ -6,7 +6,7 @@ from app.models import User
 from app.schemas import UserCreate, UserLogin, UserOut, Token
 from app.auth import hash_password, verify_password, create_access_token, get_current_user
 
-router = APIRouter(prefix="/api", tags=["Auth"])
+router = APIRouter(tags=["Auth"])
 
 
 @router.post("/register", response_model=UserOut, status_code=status.HTTP_201_CREATED)
@@ -36,5 +36,5 @@ def login(data: UserLogin, db: Session = Depends(get_db)):
 
 
 @router.get("/me", response_model=UserOut)
-def me(current_user: User = Depends(get_current_user)):
+def read_users_me(current_user: User = Depends(get_current_user)):
     return current_user

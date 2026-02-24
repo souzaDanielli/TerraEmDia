@@ -23,11 +23,11 @@ app.add_middleware(
 )
 
 # Registra as rotas
-app.include_router(auth.router)
-app.include_router(machines.router)
-app.include_router(maintenance.router)
-app.include_router(supplies.router)
-app.include_router(movements.router)
+app.include_router(auth.router, prefix="/api", tags=["Auth"])
+app.include_router(machines.router, prefix="/api/machines", tags=["Machines"])
+app.include_router(maintenance.router, prefix="/api/maintenance", tags=["Maintenance"])
+app.include_router(supplies.router, prefix="/api/supplies", tags=["Supplies"])
+app.include_router(movements.router, prefix="/api/movements", tags=["Movements"])
 
 
 @app.get("/")

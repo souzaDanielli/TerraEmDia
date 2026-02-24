@@ -15,12 +15,21 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (res) => res,
   (err) => {
+    const isLoginRequest = err.config.url.includes('/login');
+
     if (err.response?.status === 401) {
-      localStorage.removeItem('token')
-      window.location.href = '/login'
+      if (isLoginRequest) {
+        return Promise.reject(err);
+      }
+
+      const token = localStorage.getItem('token');
+      if (token) {
+        localStorage.removeItem('token');
+        window.location.href = '/login';
+      }
     }
-    return Promise.reject(err)
+    return Promise.reject(err);
   }
-)
+);
 
 export default api

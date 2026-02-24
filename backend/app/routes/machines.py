@@ -7,7 +7,7 @@ from app.models import Machine, User
 from app.schemas import MachineCreate, MachineUpdate, MachineOut
 from app.auth import get_current_user
 
-router = APIRouter(prefix="/api/machines", tags=["Máquinas"])
+router = APIRouter(tags=["Máquinas"])
 
 
 @router.get("", response_model=List[MachineOut])

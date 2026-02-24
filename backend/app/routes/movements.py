@@ -7,7 +7,7 @@ from app.models import Movement, Supply, User, MovementType
 from app.schemas import MovementCreate, MovementOut
 from app.auth import get_current_user
 
-router = APIRouter(prefix="/api/movements", tags=["Movimentação"])
+router = APIRouter(tags=["Movimentação"])
 
 
 @router.post("", response_model=MovementOut, status_code=status.HTTP_201_CREATED)

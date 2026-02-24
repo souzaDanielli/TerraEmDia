@@ -7,7 +7,7 @@ from app.models import Maintenance, Machine, User
 from app.schemas import MaintenanceCreate, MaintenanceOut
 from app.auth import get_current_user
 
-router = APIRouter(prefix="/api/maintenance", tags=["Manutenção"])
+router = APIRouter(tags=["Manutenção"])
 
 
 @router.post("", response_model=MaintenanceOut, status_code=status.HTTP_201_CREATED)

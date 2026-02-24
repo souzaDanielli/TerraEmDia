@@ -7,7 +7,7 @@ from app.models import Supply, User
 from app.schemas import SupplyCreate, SupplyUpdate, SupplyOut
 from app.auth import get_current_user
 
-router = APIRouter(prefix="/api/supplies", tags=["Estoque"])
+router = APIRouter(tags=["Estoque"])
 
 
 @router.get("", response_model=List[SupplyOut])
