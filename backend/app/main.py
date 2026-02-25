@@ -26,7 +26,10 @@ app.include_router(maintenance.router, prefix="/api/maintenance", tags=["Mainten
 app.include_router(supplies.router, prefix="/api/supplies", tags=["Supplies"])
 app.include_router(movements.router, prefix="/api/movements", tags=["Movements"])
 
-
 @app.get("/")
-def root():
-    return {"message": "Terra em Dia API 🌱"}
+def healthcheck():
+    return {"status": "ok"}
+
+@app.get("/api/")
+def api_healthcheck():
+    return {"status": "ok"}
