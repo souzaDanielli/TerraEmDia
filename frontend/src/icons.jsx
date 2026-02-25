@@ -24,6 +24,7 @@ export const icons = {
   check: (props) => <FaCheckCircle {...props} style={{ color: baseColor, verticalAlign: 'middle', ...props?.style }} />,
   hand: (props) => <FaHandPaper {...props} style={{ color: baseColor, verticalAlign: 'middle', ...props?.style }} />,
   seed: (props) => <FaSeedling {...props} style={{ color: '#fff', verticalAlign: 'middle', fontSize: '2em', ...props?.style }} />,
+  seedGreen: (props) => <FaSeedling {...props} style={{ color: baseColor, verticalAlign: 'middle', marginTop: '-8px', fontSize: '1em', ...props?.style }} />,
   tractor: (props) => <FaTractor {...props} style={{ color: baseColor, verticalAlign: 'middle', ...props?.style }} />,
   wrench: (props) => <FaWrench {...props} style={{ color: baseColor, verticalAlign: 'middle', ...props?.style }} />,
   wrenchWhite: (props) => <FaWrench {...props} style={{ color: '#fff', verticalAlign: 'middle', ...props?.style }} />,
