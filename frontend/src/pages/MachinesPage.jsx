@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { icons } from '../icons.jsx'
 import api from '../api'
 
 export default function MachinesPage() {
@@ -6,17 +7,15 @@ export default function MachinesPage() {
   const [loading, setLoading] = useState(true)
   const [showForm, setShowForm] = useState(false)
   const [editing, setEditing] = useState(null)
-  const [showMaint, setShowMaint] = useState(null) // machine id
+  const [showMaint, setShowMaint] = useState(null)
   const [maintList, setMaintList] = useState([])
   const [showMaintForm, setShowMaintForm] = useState(false)
 
-  // Form states
   const [nome, setNome] = useState('')
   const [tipo, setTipo] = useState('')
   const [horimetro, setHorimetro] = useState('')
   const [intervalo, setIntervalo] = useState('')
 
-  // Maintenance form
   const [maintDesc, setMaintDesc] = useState('')
   const [maintHorimetro, setMaintHorimetro] = useState('')
   const [maintCusto, setMaintCusto] = useState('')
@@ -108,15 +107,14 @@ export default function MachinesPage() {
 
   if (loading) return <div className="loading">Carregando...</div>
 
-  // --- Maintenance modal ---
   if (showMaint) {
     const machine = machines.find((m) => m.id === showMaint)
     return (
       <div>
         <div className="page-header">
-          <h2>🔧 Manutenções — {machine?.nome}</h2>
+          <h2>{icons.wrench()} Manutenções — {machine?.nome}</h2>
           <button className="btn btn-secondary btn-sm" onClick={() => { setShowMaint(null); setShowMaintForm(false) }}>
-            ← Voltar
+            {icons.left()} Voltar
           </button>
         </div>
 
@@ -167,9 +165,9 @@ export default function MachinesPage() {
               <div className="maint-item">
                 <div className="maint-desc">{m.descricao}</div>
                 <div className="maint-meta">
-                  📅 {new Date(m.data).toLocaleDateString('pt-BR')} &nbsp;|&nbsp;
-                  ⏱ {m.horimetro_no_momento}h &nbsp;|&nbsp;
-                  💰 R$ {m.custo.toFixed(2)}
+                  {icons.calendar()} {new Date(m.data).toLocaleDateString('pt-BR')} &nbsp;|&nbsp;
+                  {icons.clock()} {m.horimetro_no_momento}h &nbsp;|&nbsp;
+                  {icons.money()} R$ {m.custo.toFixed(2)}
                 </div>
                 {m.observacao && <div className="maint-meta">{m.observacao}</div>}
               </div>
@@ -180,11 +178,10 @@ export default function MachinesPage() {
     )
   }
 
-  // --- Main machines list ---
   return (
     <div>
       <div className="page-header">
-        <h2>🚜 Máquinas</h2>
+        <h2>{icons.tractor()} Máquinas</h2>
         <button className="btn btn-primary btn-sm" onClick={() => { resetForm(); setShowForm(true) }}>
           + Nova Máquina
         </button>
@@ -252,9 +249,9 @@ export default function MachinesPage() {
               <span>Intervalo: {m.intervalo_manutencao}h</span>
             </div>
             <div className="card-actions">
-              <button className="btn btn-primary btn-sm" onClick={() => openMaintenance(m.id)}>🔧 Manutenções</button>
-              <button className="btn btn-secondary btn-sm" onClick={() => handleEdit(m)}>✏️ Editar</button>
-              <button className="btn btn-danger btn-sm" onClick={() => handleDelete(m.id)}>🗑️</button>
+              <button className="btn btn-primary btn-sm" onClick={() => openMaintenance(m.id)}>{icons.wrenchWhite()} Manutenções</button>
+              <button className="btn btn-secondary btn-sm" onClick={() => handleEdit(m)}>{icons.edit()} Editar</button>
+              <button className="btn btn-danger btn-sm" onClick={() => handleDelete(m.id)}>{icons.trash()}</button>
             </div>
           </div>
         ))

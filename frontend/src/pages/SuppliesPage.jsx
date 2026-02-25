@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { icons } from '../icons.jsx'
 import api from '../api'
 
 export default function SuppliesPage() {
@@ -6,17 +7,15 @@ export default function SuppliesPage() {
   const [loading, setLoading] = useState(true)
   const [showForm, setShowForm] = useState(false)
   const [editing, setEditing] = useState(null)
-  const [showMovements, setShowMovements] = useState(null) // supply id
+  const [showMovements, setShowMovements] = useState(null)
   const [movementsList, setMovementsList] = useState([])
   const [showMovForm, setShowMovForm] = useState(false)
 
-  // Supply form
   const [nome, setNome] = useState('')
   const [unidade, setUnidade] = useState('')
   const [qtdAtual, setQtdAtual] = useState('')
   const [qtdMinima, setQtdMinima] = useState('')
 
-  // Movement form
   const [movTipo, setMovTipo] = useState('entrada')
   const [movQtd, setMovQtd] = useState('')
   const [movObs, setMovObs] = useState('')
@@ -92,15 +91,14 @@ export default function SuppliesPage() {
 
   if (loading) return <div className="loading">Carregando...</div>
 
-  // --- Movements view ---
   if (showMovements) {
     const supply = supplies.find((s) => s.id === showMovements)
     return (
       <div>
         <div className="page-header">
-          <h2>📋 Movimentações — {supply?.nome}</h2>
+          <h2>{icons.clipboard()} Movimentações — {supply?.nome}</h2>
           <button className="btn btn-secondary btn-sm" onClick={() => { setShowMovements(null); setShowMovForm(false) }}>
-            ← Voltar
+            {icons.left()} Voltar
           </button>
         </div>
 
@@ -123,8 +121,8 @@ export default function SuppliesPage() {
                 <div className="form-group">
                   <label>Tipo</label>
                   <select value={movTipo} onChange={(e) => setMovTipo(e.target.value)}>
-                    <option value="entrada">📥 Entrada</option>
-                    <option value="saida">📤 Saída</option>
+                    <option value="entrada">{icons.down()} Entrada</option>
+                    <option value="saida">{icons.up()} Saída</option>
                   </select>
                 </div>
                 <div className="form-group">
@@ -152,13 +150,13 @@ export default function SuppliesPage() {
           movementsList.map((m) => (
             <div key={m.id} className={`card ${m.tipo === 'entrada' ? 'status-ok' : 'status-atencao'}`}>
               <div className="card-header">
-                <h3>{m.tipo === 'entrada' ? '📥 Entrada' : '📤 Saída'}</h3>
+                <h3>{m.tipo === 'entrada' ? <>{icons.down()} Entrada</> : <>{icons.up()} Saída</>}</h3>
                 <span className={`badge ${m.tipo === 'entrada' ? 'badge-ok' : 'badge-atencao'}`}>
                   {m.quantidade} {supply?.unidade}
                 </span>
               </div>
               <div className="card-details">
-                <span>📅 {new Date(m.data).toLocaleDateString('pt-BR')}</span>
+                <span>{icons.calendar()} {new Date(m.data).toLocaleDateString('pt-BR')}</span>
                 {m.observacao && <span>{m.observacao}</span>}
               </div>
             </div>
@@ -168,11 +166,10 @@ export default function SuppliesPage() {
     )
   }
 
-  // --- Main supplies list ---
   return (
     <div>
       <div className="page-header">
-        <h2>📦 Estoque de Insumos</h2>
+        <h2>{icons.box()} Estoque de Insumos</h2>
         <button className="btn btn-primary btn-sm" onClick={() => { resetForm(); setShowForm(true) }}>
           + Novo Insumo
         </button>
@@ -235,8 +232,8 @@ export default function SuppliesPage() {
               <span>Mínimo: {s.quantidade_minima} {s.unidade}</span>
             </div>
             <div className="card-actions">
-              <button className="btn btn-primary btn-sm" onClick={() => openMovements(s.id)}>📋 Movimentações</button>
-              <button className="btn btn-secondary btn-sm" onClick={() => handleEdit(s)}>✏️ Editar</button>
+              <button className="btn btn-primary btn-sm" onClick={() => openMovements(s.id)}>{icons.clipboardWhite()} Movimentações</button>
+              <button className="btn btn-secondary btn-sm" onClick={() => handleEdit(s)}>{icons.edit()} Editar</button>
             </div>
           </div>
         ))

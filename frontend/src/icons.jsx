@@ -1,0 +1,40 @@
+import {
+  FaExclamationTriangle,
+  FaBoxOpen,
+  FaCheckCircle,
+  FaHandPaper,
+  FaSeedling,
+  FaTractor,
+  FaWrench,
+  FaEdit,
+  FaTrash,
+  FaClipboardList,
+  FaCalendarAlt,
+  FaClock,
+  FaMoneyBillWave,
+  FaArrowLeft,
+  FaArrowCircleDown,
+  FaArrowCircleUp
+} from 'react-icons/fa';
+
+const baseColor = '#2e7d32';
+export const icons = {
+  alert: (props) => <FaExclamationTriangle {...props} style={{ color: '#ff9800', verticalAlign: 'middle', ...props?.style }} />,
+  box: (props) => <FaBoxOpen {...props} style={{ color: baseColor, verticalAlign: 'middle', ...props?.style }} />,
+  check: (props) => <FaCheckCircle {...props} style={{ color: baseColor, verticalAlign: 'middle', ...props?.style }} />,
+  hand: (props) => <FaHandPaper {...props} style={{ color: baseColor, verticalAlign: 'middle', ...props?.style }} />,
+  seed: (props) => <FaSeedling {...props} style={{ color: '#fff', verticalAlign: 'middle', fontSize: '2em', ...props?.style }} />,
+  tractor: (props) => <FaTractor {...props} style={{ color: baseColor, verticalAlign: 'middle', ...props?.style }} />,
+  wrench: (props) => <FaWrench {...props} style={{ color: baseColor, verticalAlign: 'middle', ...props?.style }} />,
+  wrenchWhite: (props) => <FaWrench {...props} style={{ color: '#fff', verticalAlign: 'middle', ...props?.style }} />,
+  edit: (props) => <FaEdit {...props} style={{ color: baseColor, verticalAlign: 'middle', ...props?.style }} />,
+  trash: (props) => <FaTrash {...props} style={{ color: '#fff', verticalAlign: 'middle', ...props?.style }} />,
+  clipboard: (props) => <FaClipboardList {...props} style={{ color: baseColor, verticalAlign: 'middle', ...props?.style }} />,
+  clipboardWhite: (props) => <FaClipboardList {...props} style={{ color: '#fff', verticalAlign: 'middle', ...props?.style }} />,
+  calendar: (props) => <FaCalendarAlt {...props} style={{ color: baseColor, verticalAlign: 'middle', ...props?.style }} />,
+  clock: (props) => <FaClock {...props} style={{ color: baseColor, verticalAlign: 'middle', ...props?.style }} />,
+  money: (props) => <FaMoneyBillWave {...props} style={{ color: baseColor, verticalAlign: 'middle', ...props?.style }} />,
+  left: (props) => <FaArrowLeft {...props} style={{ color: baseColor, verticalAlign: 'middle', ...props?.style }} />,
+  down: (props) => <FaArrowCircleDown {...props} style={{ color: baseColor, verticalAlign: 'middle', ...props?.style }} />,
+  up: (props) => <FaArrowCircleUp {...props} style={{ color: baseColor, verticalAlign: 'middle', ...props?.style }} />,
+};

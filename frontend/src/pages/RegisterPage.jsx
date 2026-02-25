@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { icons } from '../icons.jsx'
 import { useNavigate, Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 
@@ -28,7 +29,7 @@ export default function RegisterPage() {
   return (
     <div className="auth-page">
       <div className="auth-card">
-        <h2>🌱 Terra em Dia</h2>
+        <h2>{icons.seed()} Terra em Dia</h2>
         <p className="subtitle">Crie sua conta</p>
 
         {error && <div className="error-msg">{error}</div>}

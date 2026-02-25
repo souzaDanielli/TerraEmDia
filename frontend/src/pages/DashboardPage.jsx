@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { icons } from '../icons.jsx'
 import { Link } from 'react-router-dom'
 import api from '../api'
 
@@ -27,10 +28,10 @@ export default function DashboardPage() {
 
       {/* Máquinas em alerta */}
       <div className="alert-section">
-        <h2>⚠️ Máquinas que precisam de atenção</h2>
+        <h2>{icons.alert()} Máquinas que precisam de atenção</h2>
         {alertMachines.length === 0 ? (
           <div className="card status-ok">
-            <p>✅ Todas as máquinas estão em dia!</p>
+            <p>{icons.check()} Todas as máquinas estão em dia!</p>
           </div>
         ) : (
           alertMachines.map((m) => (
@@ -53,10 +54,10 @@ export default function DashboardPage() {
 
       {/* Insumos com estoque baixo */}
       <div className="alert-section">
-        <h2>📦 Insumos com estoque baixo</h2>
+        <h2>{icons.box()} Insumos com estoque baixo</h2>
         {alertSupplies.length === 0 ? (
           <div className="card status-ok">
-            <p>✅ Estoque de todos os insumos está OK!</p>
+            <p>{icons.check()} Estoque de todos os insumos está OK!</p>
           </div>
         ) : (
           alertSupplies.map((s) => (
@@ -77,7 +78,7 @@ export default function DashboardPage() {
       {/* Quick links */}
       {machines.length === 0 && supplies.length === 0 && (
         <div className="empty-state">
-          <p>👋 Bem-vindo ao Terra em Dia!</p>
+          <p>{icons.hand()} Bem-vindo ao Terra em Dia!</p>
           <p style={{ marginTop: 8 }}>
             Comece cadastrando suas <Link to="/machines" style={{ color: '#2e7d32' }}>máquinas</Link> e <Link to="/supplies" style={{ color: '#2e7d32' }}>insumos</Link>.
           </p>

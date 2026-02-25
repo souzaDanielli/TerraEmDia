@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate, NavLink } from 'react-router-dom'
+import { icons } from './icons.jsx'
 import { useAuth } from './context/AuthContext'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
@@ -18,7 +19,9 @@ function Layout({ children }) {
   return (
     <>
       <header className="app-header">
-        <h1>🌱 Terra em Dia</h1>
+        <div className="titulo">
+          <div>{icons.seed()}</div> <h1>Terra em Dia</h1>
+        </div>
         <nav>
           <NavLink to="/" className={({ isActive }) => isActive ? 'active' : ''}>Início</NavLink>
           <NavLink to="/machines" className={({ isActive }) => isActive ? 'active' : ''}>Máquinas</NavLink>

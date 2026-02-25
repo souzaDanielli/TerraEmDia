@@ -4,7 +4,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.database import engine, Base
 from app.routes import auth, machines, maintenance, supplies, movements
 
-# Cria as tabelas no banco
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
@@ -13,7 +12,6 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# CORS — permite o frontend acessar a API
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:3000", "http://localhost:5173"],
@@ -22,7 +20,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Registra as rotas
 app.include_router(auth.router, prefix="/api", tags=["Auth"])
 app.include_router(machines.router, prefix="/api/machines", tags=["Machines"])
 app.include_router(maintenance.router, prefix="/api/maintenance", tags=["Maintenance"])
